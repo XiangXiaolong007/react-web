@@ -10,7 +10,7 @@ import ReactStackForm from './chapter02/ReactStackForm';
 import SimpleForm from './chapter02/SimpleForm';
 import Hello from './chapter04/Hello';
 import UserListContainer from './chapter04/UserListContainer';
-import Container from './chapter04/Container';
+// import Container from './chapter04/Container';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 // ReactDOM.render(<PostList />,document.getElementById("root"));
@@ -20,5 +20,5 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // ReactDOM.render(<SimpleForm />,document.getElementById("root"));
 // ReactDOM.render(<Hello />,document.getElementById("root"));
 // ReactDOM.render(<UserListContainer />,document.getElementById("root"));
-ReactDOM.render(<Container />,document.getElementById("root"));
+// ReactDOM.render(<Container />,document.getElementById("root"));
 registerServiceWorker();
