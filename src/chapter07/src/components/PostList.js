@@ -1,15 +1,8 @@
-import React, {
-    Component
-} from "react";
-import {
-    Link
-} from "react-router-dom";
-import PostsView from "./PostView";
+import React, {Component} from "react";
+import {Link} from "react-router-dom";
+import PostsView from "./PostsView";
 import PostEditor from "./PostEditor";
-import {
-    get,
-    post
-} from "../utils/require";
+import {get,post} from "../utils/require";
 import url from "../utils/util";
 import "./PostList.css";
 
@@ -78,12 +71,12 @@ class PostList extends Component {
                 <div>
                     <h2>帖子列表</h2>
                     {/*只有在登录状态，才显示发帖按钮*/}
-                    {userId ? <button onClick="this.handleNewPost">发帖</button> : null}
+                    {userId ? <button onClick={this.handleNewPost}>发帖</button> : null}
                 </div>
                 {/*若当前正在创建新帖子，则渲染PostEditor组件*/}
-                {this.state.newPost ? (<PostEditor onSave={this.handleSave} onCancel={this.handleCancel}></PostEditor>) : null}
+                {this.state.newPost ? (<PostEditor onSave={this.handleSave} onCancel={this.handleCancel} />) : null}
                 {/*PostView显示帖子的列表数据*/}
-                <PostsView posts={this.state.posts}></PostsView>
+                <PostsView posts={this.state.posts} />
             </div>
         )
     }

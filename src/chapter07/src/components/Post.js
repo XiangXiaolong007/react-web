@@ -73,5 +73,47 @@ class Post extends Component {
             content: content
         };
         this.saveComment(comment);
+    }
+    //保存新的评论到服务器
+    saveComment(comment) {
+        post(url.createComment(),comment).then(data => {
+            if(!data.error) {
+                this.refreshComments();
+            }
+        })
+    }
+    //保存新的评论到服务器
+    savePost(id,post) {
+        put(url.updatePost(id),post).then(data => {
+            if(!data.error) {
+                /*因为返回的帖子对象只有author的id信息，
+                *所有需要额外把完整的author信息合并到帖子对象中*/
+               const newPost = { ...data,author:this.state.post.author};
+               this.setState({
+                   post: newPost,
+                   editing: false
+               })
+            }
+        })
+    }
+    render() {
+        const {post,comments,editing} = this.state;
+        const {userId} = this.props;
+        if(!post) {
+            return null;
+        }
+        const editable = userId === post.author.id;
+        return (
+            <div className="post">
+                {editing ? (
+                    <PostEditor post={post} onSave={this.handlePostSave} onCancel={this.handlePostCancel}/>
+                ) : (
+                    /*PostView负责展示某一帖子*/
+                    <PostView post={post} editable={editable} onEditClick={this.handleEditClick}/>
+                )}
+                <CommentList comments={comments} editable={Boolean(userId)} onSubmit={this.handleCommentSubmit}/>
+            </div>
+        )
     } 
 }
+export default Post;

@@ -48,7 +48,7 @@ export default {
     //修改帖子
     updatePost: id => `/post/${id}`,
     //获取评论列表
-    getCommentList: postId => `/comment?filter=${encodeFilter(conmmentListFilter(postId))}`,
+    getCommentList: postId => `/comment?filter=${encodeFilter(commentListFilter(postId))}`,
     //新建评论
     createComment: () => "/comment"
 }
